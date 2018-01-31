@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+        </style>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </head>
+
+    <nav class="navbar navbar-dark bg-dark">
+
+        <div class="justify-content-center">
+            <a class="navbar-brand" href="/">Punkt.</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="justify-content-end">
+                <%if(!currentUser){ %>
+                <a class="btn btn-dark" href="/login"><i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>Log in</a>
+                <a class="btn btn-dark" href="/register"><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i>Sign up</a>
+                <%} else {%>
+                    <a><h3>Signed in as <%=currentUser.username%></h3></a>
+                    <a class="btn btn-dark" href="/logout"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>Log out</a>
+                <%} %>
+            </div>
+        </div>
+
+
+
+    </nav>
+
+    <div class="container">
+        <% if(error && error.length > 0){  %>
+            <div class="alert alert-danger m-1 text-center" role="alert">
+                <p><%= error %></p>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){  %>
+            <div class="alert alert-success m-1 text-center" role="alert">
+                <p><%= success %></p>
+            </div>
+        <% } %>
+    </div>
+    <div class="container">

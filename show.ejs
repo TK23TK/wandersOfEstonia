@@ -1,0 +1,44 @@
+<% include ../partials/header%>
+
+        <div class="jumbotron bg-transparent text-white">
+            <h1 class="text-center border-light"><%=campground.name%></h1>
+            <img class="card-img-top img-thumbnail" src="<%=campground.image%>" alt="Card image cap">
+            <div class="container border rounded p-2 m-2">
+                <%if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                    <div class="float-lg-right"><a href="/locations/<%=campground.id%>/edit"><button class="btn btn-sm btn-warning text-white margin-left">Edit Post</button></a></div>
+                    <form class=" float-lg-right inline" action="/locations/<%=campground._id%>?_method=DELETE" method="POST">
+                        <button class="inline btn btn-sm btn-danger text-white">Delete The image</button>
+                    </form>
+                <% } %>
+                <div class="container p-3">
+                    <p class="btn-group-vertical float-lg-left"><strong class="text-success">Author:</strong> <%=campground.author.username%></p><br>
+                </div>
+                <div class="container">
+                    <p class=""><strong class="text-success">Description: </strong><%= campground.description%>.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="jumbotron d-block container border">
+            <div class="form-row text-center p-2">
+                <a class="col-12" href="/locations/<%= campground._id %>/comments/new"> <button class="btn btn-lg btn-primary text-white">Add new comment.</button></a>
+            </div>
+            <% campground.comments.forEach(function (comment) {  %>
+            <div class="card-text border rounded text-left text p-3 text-white m-1">
+                <strong class="text-success"><%=comment.author.username%>: </strong> <%=comment.text%>
+                <%if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                <a class="margin-left btn btn-sm btn-warning float-md-right text-white inline" href="/locations/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit comment</a>
+
+                <form class="float-lg-right" action="/locations/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-sm btn-danger inline"  value="Delete comment">
+                </form>
+            <% } %>
+            </div>
+
+        <%});%>
+
+        </div>
+        </div>
+
+

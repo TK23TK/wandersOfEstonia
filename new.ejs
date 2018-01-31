@@ -1,0 +1,21 @@
+<%include ../partials/header%>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 style="text-align: center">Add new comment to <%=campground.name%></h1>
+    </div>
+    <div style="width: 30%; margin: 25px auto;">
+        <form action="/locations/<%=campground._id%>/comments" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="comment[text]" placeholder="Comment">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-success btn-block float">Submit!</button>
+            </div>
+        </form>
+        <a href="/locations">
+            <button class="btn btn-dark justify-content-end">Go Back!</button>
+        </a>
+    </div>
+</div>
+

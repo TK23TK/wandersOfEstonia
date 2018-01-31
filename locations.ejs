@@ -1,0 +1,27 @@
+<%include ../partials/header%>
+
+
+<header class="jumbotron">
+    <h1>Most Beautiful sites in Estonia.</h1>
+    <p class="">Enjoy the pictures and contribute!</p>
+    <p><a class="btn btn-primary btn-lg" href="/locations/new">Add new location</a></p>
+</header>
+
+
+
+<div class="row">
+<% campgrounds.forEach(function (value) { %>
+    <div class="col-lg-4 col-md-6">
+        <div class="caption img-thumbnail margin text-center">
+            <h4><%=value.name%></h4>
+            <img class="img-thumbnail" src="<%= value.image %>" alt="">
+            <p>
+               <a class="btn btn-outline-info" href="/locations/<%=value._id%>">More Info</a>
+            </p>
+        </div>
+    </div>
+<% }); %>
+
+</div>
+
+
